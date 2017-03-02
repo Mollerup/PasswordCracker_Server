@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PasswordCracker_Server;
 
-namespace DistributedPasswordCracker_Server
+namespace PasswordCracker_Server
 {
     class ConnectionService
     {

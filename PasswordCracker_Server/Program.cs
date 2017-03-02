@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Threading;
 using System.Net.NetworkInformation;
-using DistributedPasswordCracker_Server.Handlers;
+using PasswordCracker_Server;
+using PasswordCracker_Server.Handlers;
 
-namespace DistributedPasswordCracker_Server
+namespace PasswordCracker_Server
 {
     class ServerProgram
     {

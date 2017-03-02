@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DistributedPasswordCracker_Server.Handlers
+namespace PasswordCracker_Server.Handlers
 {
     class DictionaryFileHandler
     {

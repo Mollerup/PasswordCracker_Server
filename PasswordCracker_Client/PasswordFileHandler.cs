@@ -5,8 +5,9 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using PasswordProject;
 
-namespace PasswordCracker_Server
+namespace PasswordCracker_Client
 {
     class PasswordFileHandler
     {
