@@ -51,7 +51,7 @@ namespace PasswordCracker_Server
 
                         case "-getinfo":
                             string result = null;
-                            foreach (var v in Program.resultUserInfo)
+                            foreach (var v in ServerProgram.resultUserInfo)
                             {
                                 result += v.ToString() + "_";
                             }
@@ -78,12 +78,12 @@ namespace PasswordCracker_Server
                                     if (!string.IsNullOrEmpty(v))
                                     {
                                         var x = v.Split(':');
-                                        Program.resultUserInfo.Add(new UserInfoClearText(x[0], x[1]));
+                                        ServerProgram.resultUserInfo.Add(new UserInfoClearText(x[0], x[1]));
                                         
                                     }
                                 }
                                 Console.WriteLine("Result so far:");
-                                foreach(var v in Program.resultUserInfo)
+                                foreach(var v in ServerProgram.resultUserInfo)
                                 {
                                     Console.WriteLine(v);
                                 }
@@ -96,7 +96,7 @@ namespace PasswordCracker_Server
                             ns.Close();
                             sw.Close();
                             sr.Close();
-                            Console.WriteLine("A client closed the program...");
+                            Console.WriteLine("A client closed the Program...");
                             break;
                         default:
                             sw.WriteLine("Unknown commando. Type -help for help. ");
@@ -105,7 +105,7 @@ namespace PasswordCracker_Server
                 }
                 catch (IOException)
                 {
-                    Console.WriteLine("A client closed the program...");
+                    Console.WriteLine("A client closed the Program...");
                     break;
                 }
             }
@@ -115,7 +115,7 @@ namespace PasswordCracker_Server
         {
             string password = null;
 
-            foreach (var vv in Program.UserInfo)
+            foreach (var vv in ServerProgram.UserInfo)
             {
                 password += vv.ToString() + "_";
             }
@@ -126,9 +126,9 @@ namespace PasswordCracker_Server
         public string GetWordListPart()
         {
             string wordlist = null;
-            var index = Program.wordlistIndexer;
-            Program.wordlistIndexer++;
-            var list = Program.DictionaryParts.ToList()[index];
+            var index = ServerProgram.wordlistIndexer;
+            ServerProgram.wordlistIndexer++;
+            var list = ServerProgram.DictionaryParts.ToList()[index];
             foreach (var v in list)
             {
                 wordlist += v + "_";

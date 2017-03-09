@@ -23,6 +23,9 @@ namespace PasswordCracker_Server
         public static int wordlistIndexer = 0;
         public static List<UserInfoClearText> resultUserInfo;
 
+        private static string passwordFile = "passwords.txt";
+        private static string dictionaryFile = "webster-dictionary-reduced.txt";
+
 
         static void Main(string[] args)
         {
@@ -75,11 +78,11 @@ namespace PasswordCracker_Server
         {
             Console.WriteLine();
             Console.WriteLine("Loading password file...");
-            UserInfo = PasswordFileHandler.ReadPasswordFile("passwords.txt");
+            UserInfo = PasswordFileHandler.ReadPasswordFile(passwordFile);
             Console.WriteLine("Password file loaded sucessfull...");
             Console.WriteLine();
             Console.WriteLine("Loading dictionary... ");
-            Dictionary = DictionaryFileHandler.ReadDictionary("webster-dictionary.txt");
+            Dictionary = DictionaryFileHandler.ReadDictionary(dictionaryFile);
             Console.WriteLine("Dictionary count: " + Dictionary.Count);
             Console.WriteLine("Dictionary loaded sucessfull...");
         }
