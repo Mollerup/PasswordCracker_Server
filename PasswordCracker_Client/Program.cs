@@ -27,6 +27,7 @@ namespace PasswordClient
 
             sr = new StreamReader(ns);
             sw = new StreamWriter(ns);
+            sw.AutoFlush = true;
 
             while (true)
             {
@@ -38,15 +39,13 @@ namespace PasswordClient
                     Console.WriteLine("Shutting down...");
                     break;
                 }
-                else if (msg == "-crack")
+                else if (msg == "-go")
                 {
                     sw.WriteLine(msg);
                     GetPassword();
-                    Console.WriteLine("Getting passwords");
                     GetWordListPart();
                     Cracking cracking = new Cracking(UserInfo, WordListPart);
                     var passwords = cracking.RunCracking();
-                    sw.WriteLine("result");
                     sw.WriteLine(passwords);
                 }
             }
@@ -57,6 +56,7 @@ namespace PasswordClient
             if (UserInfo.Count == 0)
             {
                 Console.WriteLine();
+                Console.WriteLine("Revieving passwords.");
                 var passwordfile = sr.ReadLine();
                 var passfile = passwordfile.Split('_');
 

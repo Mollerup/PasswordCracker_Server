@@ -36,38 +36,12 @@ namespace PasswordCracker_Server
 
                     switch (msg)
                     {
-                        case "-getpassword":
-                            var pass = GetPassword();
-                            sw.WriteLine("password");
+                        case "-go":
                             Console.WriteLine("Sending password file to client...");
-                            sw.WriteLine(pass);
-                            break;
-
-                        case "-getwordlist":
-                            sw.WriteLine("wordlist");
+                            sw.WriteLine(GetPassword());
                             Console.WriteLine("Sending wordlist part to client...");
                             sw.WriteLine(GetWordListPart());
-                            break;
 
-                        case "-getinfo":
-                            string result = null;
-                            foreach (var v in ServerProgram.resultUserInfo)
-                            {
-                                result += v.ToString() + "_";
-                            }
-
-                            if (string.IsNullOrEmpty(result))
-                            {
-                                sw.WriteLine("No results so far...");
-                            }
-                            else
-                            {
-                                sw.WriteLine(result); 
-                            }
-
-                            break;
-
-                        case "result":
                             var cResult = sr.ReadLine();
 
                             if (!string.IsNullOrEmpty(cResult))
@@ -79,17 +53,16 @@ namespace PasswordCracker_Server
                                     {
                                         var x = v.Split(':');
                                         ServerProgram.resultUserInfo.Add(new UserInfoClearText(x[0], x[1]));
-                                        
+
                                     }
                                 }
                                 Console.WriteLine("Result so far:");
-                                foreach(var v in ServerProgram.resultUserInfo)
+                                foreach (var v in ServerProgram.resultUserInfo)
                                 {
                                     Console.WriteLine(v);
                                 }
                             }
                             break;
-
                         case "-exit":
                             client.Close();
                             connectionSocket.Stop();
